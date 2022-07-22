@@ -1,0 +1,134 @@
+.container-fluid{
+    background-color: #E4EFF5 ;
+}
+/*content bakrground*/
+.add-department{
+    background-color: #fff;
+    width: 90%;
+    height: 700px;
+    margin: 64px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding-top: 16px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+/* end content bakrground*/
+/* img-doctor*/
+.photo_place{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: #707070;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 32px;
+}
+.icon-add{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+   background-color: #3389FF;
+    box-sizing: border-box;
+    margin-left: 45%;
+    transform: translateX(-50%);
+    margin-top: -80px;
+    margin-bottom: 32px;
+}
+.icon-add:hover{
+    color: #fff;
+    background-color: #0A46B6;
+}
+.icon-add img{
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%,-50%);
+}
+/* end img-doctor*/
+/* form input */
+.form input[type=text],input[type=number]{
+    width: 70%;
+    padding: 12px;
+    text-align: right;
+    margin: 12px;
+    border: 1px solid #707070;
+    border-radius: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.form input[type=submit]{
+    background-color: #3389FF;
+     width: 284px;
+    padding: 12px;
+    padding: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-right: 50px;
+}
+.form input[type=submit]:hover{
+    color: #fff;
+    background-color: #0A46B6;
+}
+.box{
+    box-sizing: border-box;
+    padding-left: 250px;
+    padding-top: 84px;
+}
+/* end form input */
+/* start sidemenu */
+.sidemenu{
+    position: fixed;
+    width: 15%;
+    background-color: #F5F5F5;
+    height: 735px ;
+   border-radius: 10px 0px 0px 10px ;
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.siedbar ul a{
+    display: block;
+    margin-bottom: 27px;
+    font-size: 18px;
+    float: right;
+    color: #000;
+    font-weight: bold;
+}
+.siedbar ul a:hover{
+    width: 220px;
+    text-align: right;
+    background-color: #3389FF;
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+}
+.siedbar ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+     float: right;
+    margin-top: 32px;
+}
+.siedbar ul img{
+    width: 23px;
+    height: 25px;
+    margin-left: 27px;
+    margin-right: 16px;
+}
+.logo{
+    border-bottom: 2px solid #000 ;
+    margin-top: 32px;
+}
+.logo img{
+    width: 150px;
+   margin-left: 50px;
+}
+.logo h3{
+    color: #000;
+    font-size: 20px;
+    margin-top: -32px;
+    margin-bottom: 32px;
+    margin-left: 80px;
+}
+/* end sidemenu */
