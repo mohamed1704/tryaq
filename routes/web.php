@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\PatientsController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Front\FrontEndController;
-use App\Http\Controllers\PatientController;
+use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,9 +66,9 @@ Route::group(['prefix' => 'admin'], function () {
 //     })->name('index');
 
 Route::get('admin', [DashboardController::class, 'index'])->name('admin.index');
-Route::get('resturant/{id}', [FrontEndController::class, 'ShowProductsOfResturant'])->name('resturant.product');
-Route::get('meal/{id}', [FrontEndController::class, 'ShowProduct'])->name('ShowProduct');
-Route::get('city/{id}', [FrontEndController::class, 'ShowResturantsOfCity'])->name('city.resturants');
+// Route::get('resturant/{id}', [FrontEndController::class, 'ShowProductsOfResturant'])->name('resturant.product');
+// Route::get('meal/{id}', [FrontEndController::class, 'ShowProduct'])->name('ShowProduct');
+// Route::get('city/{id}', [FrontEndController::class, 'ShowResturantsOfCity'])->name('city.resturants');
 // Route::get('user/login', function () {
 //     return view('admin.index');
 // });

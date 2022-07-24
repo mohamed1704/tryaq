@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
-use App\Models\Department;
+// use App\Models\Department;
 
 
 class ServiceController extends Controller
@@ -21,22 +21,20 @@ class ServiceController extends Controller
             $data = Doctor::select('*');
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->editColumn('department_id', function (Service $model) {
-                    return $model->department_id ? $model->Department->name : '';
-                })
+                // ->editColumn('department_id', function (Service $model) {
+                //     return $model->department_id ? $model->Service->name : '';
+                // })
                 ->addColumn('action', 'admin.servises.action_icon')
-
                 ->editColumn('image', 'admin.servises._image')
                 ->rawColumns(['action', 'image'])
                 ->make(true);
         }
         $service = Service::all();
-        $department = Department::get('id');
         return view('admin.servises.index', [
             'service' => $service,
-            'department'=> $department 
         ]);
-        // return view('admin.Servises.index', compact('service'));
+
+        // return view('admin.servises.index', compact('service'));
     }
 
     /**
@@ -46,7 +44,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $serv = Service::get();
+        return view('admin.servises._form', compact('serv'));
     }
 
     /**

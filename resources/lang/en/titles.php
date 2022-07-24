@@ -33,6 +33,6 @@ return [
     'room_number' => 'رقم الغرفة',
     'specialization' => 'التخصص',
     'add_date' => 'التاريخ',
-    
+
 
 ];

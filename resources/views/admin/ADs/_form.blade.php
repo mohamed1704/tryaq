@@ -81,7 +81,7 @@ foreach ($columns as $key => $disc) {
         @foreach ($medicines as $col)
         <option value="{{$col->id}}">Select {{$col->name}}</option>
         @endforeach
-     
+
     </select>
   </div> --}}
 

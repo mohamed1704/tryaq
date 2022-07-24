@@ -9,7 +9,7 @@
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item">لوحة التحكم</li>
-            <li class="breadcrumb-item active"><a href="#">المطاعم</a></li>
+            <li class="breadcrumb-item active"><a href="#">الاطباء</a></li>
         </ul>
     </div>
     <div class="col-md-12">
@@ -55,7 +55,6 @@
                         </thead>
                         <tbody>
 
-
                         </tbody>
                     </table>
                 </div>
@@ -80,7 +79,9 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('doctors.index') }}",
-                columns: [{
+                columns: [
+
+                    {
                         data: 'id',
                         name: 'id',
 

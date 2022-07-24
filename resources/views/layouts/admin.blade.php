@@ -167,7 +167,7 @@
             <li><a class="app-menu__item" href="{{ route('categories.index') }}"><i
                         class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">الاقسام</span></a>
             </li>
-            <li><a class="app-menu__item" href="('Servises.index')"><i
+            <li><a class="app-menu__item" href="{{ route('service.index') }}"><i
                         class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">
                         الخدمات</span></a></li>
 

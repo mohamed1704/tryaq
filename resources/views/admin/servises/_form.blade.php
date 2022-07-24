@@ -10,7 +10,7 @@
 
 @php
 
-$columns = Illuminate\Support\Facades\Schema::getColumnListing('departments');
+$columns = Illuminate\Support\Facades\Schema::getColumnListing('services');
 $discard = ['id', 'created_at', 'updated_at'];
 $textarea = ['description'];
 $images = ['image'];
@@ -86,11 +86,6 @@ foreach ($columns as $key => $disc) {
         </div>
     @endforeach
 </div>
-
-
-
-
-
 
 
 <button type="submit" class="btn btn-primary">{{ $button }}</button>

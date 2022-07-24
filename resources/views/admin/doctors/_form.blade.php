@@ -37,7 +37,7 @@ foreach ($columns as $key => $disc) {
             @if (in_array($col, $textarea))
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
-                    <textarea value="{{ $doc->$col }}" name="{{ $col }}" rows="2" class="form-control" id="exampleFormControlTextarea1" rows="3" >{{ $doc->$col }}</textarea>
+                    <textarea value="{{ $doctor->$col }}" name="{{ $col }}" rows="2" class="form-control" id="exampleFormControlTextarea1" rows="3" >{{ $doctor->$col }}</textarea>
                 </div>
             @elseif(in_array($col, $images))
                 <div class="form-group col-md-4">
@@ -47,7 +47,7 @@ foreach ($columns as $key => $disc) {
             @elseif(in_array($col, $date))
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
-                    <input value="{{ $doc->$col }}" type="date" name="{{ $col }}" class="form-control">
+                    <input value="{{ $doctor->$col }}" type="date" name="{{ $col }}" class="form-control">
                 </div>
             @elseif(in_array($col, $status))
                 <div class="form-group col-md-4">
@@ -64,7 +64,7 @@ foreach ($columns as $key => $disc) {
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
                     <input type="text" name="{{ $col }}" class="form-control" id="exampleFormControlInput1"
-                        placeholder=" هنا" value="{{$doc->$col}}">
+                        placeholder=" هنا" value="{{$doctor->$col}}">
                 </div>
             @endif
         @endif

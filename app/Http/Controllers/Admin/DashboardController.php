@@ -11,6 +11,7 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\Patient;
 use App\Models\Diagnosis;
+use App\Models\Emergency;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -26,17 +27,16 @@ class DashboardController extends Controller
         $doctors = Doctor::count();
         $service = Service::count();
         $dia = Diagnosis::where('service_id', '=', '2')->count();
-        // $docts
-        // $categories = Category::count();
-        // $comments = Comment::count();
-        // $posts = Post::count();
+        $cases = Emergency::all();
+        $patient = Patient::all();
 
         return view('admin.index', [
             'users' => $users,
             'doctors' => $doctors,
             'service' => $service,
             'dia' => $dia,
-            // 'posts' => $posts,
+            'cases' => $cases,
+            'patient' => $patient
 
         ]);
     }

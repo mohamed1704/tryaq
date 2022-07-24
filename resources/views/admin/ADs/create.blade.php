@@ -9,7 +9,7 @@
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item">لوحة التحكم</li>
-            <li class="breadcrumb-item active"><a href="#">العروض</a></li>
+            <li class="breadcrumb-item active"><a href="#">الإعلانات</a></li>
         </ul>
     </div>
     <div class="col-md-12">

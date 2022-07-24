@@ -57,28 +57,27 @@ class PatientsController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate([
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'categories' => 'required',
-        //     'resturants' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required',
+        ]);
         //requset Merge ^_^
+        $request->merge([
+            'slug' => Str::slug($request->get('name')),
+            'department_id' => $request->departments,
+        ]);
+
+
         $input = $request->all();
-
-
-
         if ($request->hasFile('image')) {
-
             $image_path = $request->file('image')->store('uploads', 'public');
             $input['image'] = $image_path;
         }
 
 
-        $patients = Patient::create($input);
+        $patient = Patient::create($input);
         //  Write into session
-        $success = $request->session()->flash('success', $request->name . 'add successfully');
-        return redirect()->route('patients.index');
+        $success = $request->session()->flash('success', $request->name . ' ' . 'تمت الإضافة بنجاح');
+        return redirect()->route('patients.index', ['patient' => $patient]);
     }
 
     /**
@@ -101,7 +100,7 @@ class PatientsController extends Controller
     public function edit($id)
     {
         $patient = Patient::find($id);
-      
+
         return view('admin.patients.edit', compact('patient'));
     }
 
@@ -144,7 +143,7 @@ class PatientsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
         $patient = Patient::findorfail($id);
         $patient->delete();
         $success = session()->flash('success',  $patient->name . ' Deleted successfully');

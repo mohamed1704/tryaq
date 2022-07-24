@@ -156,7 +156,7 @@
                             </a>
 
 
-                          
+
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">أحدث المطاعم</h2>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">أحدث الاطباء</h2>
                         <p class="wow fadeInUp" data-wow-delay=".6s">لدينا احدث وافضل الوجبات التى تراها من مطاعمنا
                             المختلفة</p>
                     </div>
@@ -558,7 +558,7 @@
                 <div class="col-12">
                     <div class="section-title">
                         <h2 class="wow fadeInUp" data-wow-delay=".4s">مدننا</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">لدينا العديد من المطاعم .</p>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">لدينا العديد من الاطباء .</p>
                     </div>
                 </div>
             </div>

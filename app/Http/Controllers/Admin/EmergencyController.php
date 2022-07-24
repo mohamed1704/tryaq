@@ -17,7 +17,7 @@ class EmergencyController extends Controller
     {
 
         // Gate::authorize('ads.view');
-        $emergency = Emergency::get();
+        $emergency = new Emergency();
         return view('admin.emergency.create', ['emergency' => $emergency]);
     }
 
@@ -28,10 +28,9 @@ class EmergencyController extends Controller
      */
     public function create()
     {
-        // Gate::authorize('ads.create');
 
-        $ads = new Emergency();
-        return view('admin.emergency.create', ['ads' => $ads]);
+        $emergency = new Emergency();
+        return view('admin.emergency.create', ['emergency' => $emergency]);
     }
 
     /**
@@ -52,7 +51,7 @@ class EmergencyController extends Controller
         $success = $request->session()->flash('success', $request->name . ' ' . 'Update successfully');
 
         $Emergency = Emergency::create($input);
-        return redirect()->route('emergency.index');
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -75,8 +74,8 @@ class EmergencyController extends Controller
     public function edit($id)
     {
         // Gate::authorize('ads.update');
-        $ads = Emergency::findOrfail($id);
-        return view('admin.emergency.edit', ['ads' => $ads]);
+        $emergency = Emergency::findOrfail($id);
+        return view('admin.emergency.edit', ['emergency' => $emergency]);
     }
 
     /**
@@ -89,10 +88,10 @@ class EmergencyController extends Controller
     public function update(Request $request, $id)
     {
 
-        $ads = Emergency::find($id);
-        $ads->update($request->all());
+        $emer = Emergency::find($id);
+        $emer->update($request->all());
         $success = $request->session()->flash('success', $request->name . ' ' . 'Update successfully');
-        return redirect()->route('ads.index');
+        return redirect()->route('emergency.index');
     }
 
     /**
@@ -104,9 +103,9 @@ class EmergencyController extends Controller
     public function destroy($id)
     {
 
-        $ads = Emergency::findorfail($id);
-        $ads->delete();
-        $success = session()->flash('success', $ads->title . ' Deleted successfully');
+        $emer = Emergency::findorfail($id);
+        $emer->delete();
+        $success = session()->flash('success', $emer->title . ' Deleted successfully');
         return redirect()->back();
     }
 }

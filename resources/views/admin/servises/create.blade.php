@@ -32,10 +32,10 @@
                 </div>
 
             </div>
-            <form method="POST" action="{{ route('departments.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('service.store') }}" enctype="multipart/form-data">
                 @csrf
-                @include('admin.departments._form', [
-                    'button' => 'Add',
+                @include('admin.servises._form', [
+                    'button' => 'إضافة',
                 ])
             </form>
         </div>

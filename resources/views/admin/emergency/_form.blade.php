@@ -12,7 +12,7 @@
 
 $columns = Illuminate\Support\Facades\Schema::getColumnListing('appointment');
 $discard = ['patients','doctor_name','doctor_image','add_month','status', 'created_at', 'updated_at'];
-$textarea = ['desc', 'usage'];
+$textarea = [];
 $images = ['image'];
 $date = ['date'];
 
@@ -37,23 +37,23 @@ foreach ($columns as $key => $disc) {
             @if (in_array($col, $textarea))
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
-                    <textarea name="{{ $col }}" rows="2" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea value="{{ $emergency->$col }}" name="{{ $col }}" rows="2" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $emergency->$col }}</textarea>
                 </div>
             @elseif(in_array($col, $images))
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
-                    <input type="file" name="{{ $col }}" class="form-control">
+                    <input type="file" name="{{ $col }}" class="form-control" value="{{ $emergency->$col }}">
                 </div>
             @elseif(in_array($col, $date))
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
-                    <input type="date" value="{{$date}}" name="{{ $col }}" class="form-control" placeholder="">
+                    <input type="date"  name="{{ $col }}" class="form-control" placeholder="">
                 </div>
             @else
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
                     <input type="text" name="{{ $col }}" class="form-control" id="exampleFormControlInput1"
-                        placeholder=" هنا">
+                        placeholder=" هنا" value="{{ $emergency->$col }}"  >
                 </div>
             @endif
         @endif
@@ -81,13 +81,7 @@ foreach ($columns as $key => $disc) {
         @foreach ($medicines as $col)
         <option value="{{$col->id}}">Select {{$col->name}}</option>
         @endforeach
-     
+
     </select>
   </div> --}}
-
-
-
-
-
-
 <button type="submit" class="btn btn-primary">{{ $button }}</button>

@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Emergency extends Model
 {
     use HasFactory;
+    const UPDATED_AT = null;
+    const CREATED_AT = null;
+
     protected $table = 'appointment';
 
     protected $guarded = [];
 
     protected $fillable = [
-        'updated_at',
-        'created_at',
+        'department',
+        'id',
     ];
 }

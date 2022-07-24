@@ -79,12 +79,12 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a href="category.html" aria-label="Toggle navigation">المطاعم</a>
+                                        <a href="category.html" aria-label="Toggle navigation">الاطباء</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
                                             data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">العروض</a>
+                                            aria-expanded="false" aria-label="Toggle navigation">الإعلانات</a>
                                         <ul class="sub-menu collapse" id="submenu-1-3">
                                             <li class="nav-item"><a href="item-listing-grid.html">Ad Grid</a></li>
                                             <li class="nav-item"><a href="item-listing-list.html">Ad Listing</a>
@@ -419,7 +419,7 @@
     <script src="{{ asset('website/assets/js/main.js') }}"></script>
     @yield('scripts')
     <script type="text/javascript">
-        //========= Category Slider 
+        //========= Category Slider
         tns({
             container: '.category-slider',
             items: 3,
@@ -449,7 +449,7 @@
             }
         });
 
-        //========= testimonial 
+        //========= testimonial
         tns({
             container: '.testimonial-slider',
             items: 3,

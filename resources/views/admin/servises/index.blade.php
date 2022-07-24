@@ -99,6 +99,10 @@
                         name: 'name'
                     },
                     {
+                        data: 'image',
+                        name: 'image',
+                    },
+                    {
                         data: 'status',
                         name: 'status'
                     },

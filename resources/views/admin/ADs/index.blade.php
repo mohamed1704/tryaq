@@ -3,13 +3,13 @@
 @section('content')
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-laptop"></i> العروض</h1>
+            <h1><i class="fa fa-laptop"></i> الإعلانات</h1>
 
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item">لوحة التحكم</li>
-            <li class="breadcrumb-item active"><a href="#">العروض</a></li>
+            <li class="breadcrumb-item active"><a href="#">الإعلانات</a></li>
         </ul>
 
         <div>
