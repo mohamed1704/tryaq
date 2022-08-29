@@ -47,7 +47,6 @@ class DoctorsController extends Controller
         $cities = City::all();
         $doctors = Doctor::where('status', '=', 'Active')->get();
         $doctor = new Doctor();
-        // return view('admin.doctors.create', ['doctors' => $doctors, 'category' => $category , 'cities'=>$cities]);
 
         return view('admin.doctors.create', compact('doctors', 'doctor', 'cities'));
     }
@@ -103,11 +102,7 @@ class DoctorsController extends Controller
      */
     public function edit($id)
     {
-        // Gate::authorize('doctors.update');
-        // $doctor = Doctor::all();
         $doc = Doctor::findorfail($id);
-        // $doctors = Doctor::where('status', '=', 'Active')->get();
-        // return view('admin.doctors.edit', ['doctors' => $doctors, 'doc' => $doc]);
         return view('admin.doctors.edit', compact('doc'));
     }
 

@@ -21,12 +21,7 @@ class DepartmentController extends Controller
             $data = Department::select('*');
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-
-                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-
-                    return $btn;
-                })
+                ->addColumn('action', 'admin.departments.action_icon')
                 ->rawColumns(['action'])
                 ->make(true);
         }

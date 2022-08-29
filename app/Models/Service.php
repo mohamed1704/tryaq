@@ -9,13 +9,10 @@ class Service extends Model
 {
     use HasFactory;
     protected $table = 'services';
-
     protected $guarded = [];
 
-    // protected $fillable = [
-    //     'updated_at',
-    //     'created_at',
-    //     'id'
-    // ];
+    protected $fillable = [
+        'departments',
+    ];
 
 }

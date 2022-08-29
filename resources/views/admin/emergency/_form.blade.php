@@ -11,9 +11,9 @@
 @php
 
 $columns = Illuminate\Support\Facades\Schema::getColumnListing('appointment');
-$discard = ['patients','doctor_name','doctor_image','add_month','status', 'created_at', 'updated_at'];
+$discard = ['doctor_name','doctor_image','add_month','status', 'created_at', 'updated_at','add_day','add_date','add_time','patients_name','service_name',];
 $textarea = [];
-$images = ['image'];
+$images = [];
 $date = ['date'];
 
 $filter_data = [];
@@ -75,13 +75,4 @@ foreach ($columns as $key => $disc) {
         </div>
     @endforeach
 </div>
-{{-- <div class="form-group">
-    <label for="exampleFormControlSelect2">الأدوية التي تريد عرضها</label>
-    <select name="medicine_id[]" multiple class="form-control" id="exampleFormControlSelect2">
-        @foreach ($medicines as $col)
-        <option value="{{$col->id}}">Select {{$col->name}}</option>
-        @endforeach
-
-    </select>
-  </div> --}}
 <button type="submit" class="btn btn-primary">{{ $button }}</button>

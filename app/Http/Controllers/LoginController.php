@@ -11,7 +11,7 @@ class LoginController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    
+
     /**
      * Where to redirect users after login.
      *
@@ -39,11 +39,11 @@ class LoginController extends Controller
     public function adminLogin(Request $request)
     {
         $this->validate($request, [
-            'email'   => 'required',
+            'id'   => 'required',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], true)) {
+        if (Auth::guard('admin')->attempt(['id' => $request->id, 'password' => $request->password], true)) {
 
             return redirect()->intended('/admin');
         }

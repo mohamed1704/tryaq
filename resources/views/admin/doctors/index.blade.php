@@ -49,7 +49,7 @@
                                 <th>اسم الطبيب</th>
                                 <th>صورة الطبيب </th>
                                 <th>القسم</th>
-                                <th>الجنس</th>
+                                <th>البريد الالكتروني</th>
                                 <th>الخيارات</th>
                             </tr>
                         </thead>
@@ -66,7 +66,6 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/plugins/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/plugins/dataTables.bootstrap.min.js') }}"></script>
-    {{-- <script type="text/javascript">$('#sampleTable').DataTable();</script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $.ajaxSetup({
@@ -101,14 +100,11 @@
                         name: 'department_id'
                     },
                     {
-                        data: 'gender',
-                        name: 'gender'
+                        data: 'email',
+                        name: 'email'
                     },
-                    // {
-                    //     data: 'email',
-                    //     name: 'email'
-                    // },
-                        {
+
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,

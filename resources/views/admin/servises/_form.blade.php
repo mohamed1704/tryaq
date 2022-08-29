@@ -11,9 +11,9 @@
 @php
 
 $columns = Illuminate\Support\Facades\Schema::getColumnListing('services');
-$discard = ['id', 'created_at', 'updated_at'];
+$discard = ['id', 'created_at', 'updated_at','status'];
 $textarea = ['description'];
-$images = ['image'];
+$images = [];
 $date = [];
 $status = ['status'];
 
@@ -88,4 +88,4 @@ foreach ($columns as $key => $disc) {
 </div>
 
 
-<button type="submit" class="btn btn-primary">{{ $button }}</button>
+<button type="submit" class="btn btn-primary">{{ $button ?? 'add' }}</button>

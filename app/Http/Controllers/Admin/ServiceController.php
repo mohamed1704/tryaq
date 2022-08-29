@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
-// use App\Models\Department;
+use App\Models\Department;
+use Illuminate\Support\Str;
+
 
 
 class ServiceController extends Controller
@@ -29,9 +31,14 @@ class ServiceController extends Controller
                 ->rawColumns(['action', 'image'])
                 ->make(true);
         }
+
+        $dep = Department::get(['id','name']);
         $service = Service::all();
+        $ser = Service::get(['id','status']);
         return view('admin.servises.index', [
             'service' => $service,
+            'dep' => $dep,
+            'ser' => $ser
         ]);
 
         // return view('admin.servises.index', compact('service'));
@@ -44,8 +51,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $serv = Service::get();
-        return view('admin.servises._form', compact('serv'));
+
+        $serv = Service::all();
+        return view('admin.servises.create', compact('serv'));
     }
 
     /**
@@ -56,7 +64,28 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        //requset Merge ^_^
+        $request->merge([
+            'slug' => Str::slug($request->get('name')),
+            'department_id' => $request->departments,
+        ]);
+
+
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $image_path = $request->file('image')->store('uploads', 'public');
+            $input['image'] = $image_path;
+        }
+
+
+        $service = Service::create($input);
+
+        //  Write into session
+        $success = $request->session()->flash('success', $request->name . ' ' . 'تمت الإضافة بنجاح');
+        return redirect()->route('service.index', ['service' => $service]);
     }
 
     /**
@@ -78,7 +107,12 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::findorfail($id);
+        // $request->merge([
+        //     'department_id' => $request->departments,
+        // ]);
+        return view('admin.servises.edit', compact('service'));
+
     }
 
     /**
@@ -90,7 +124,18 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $service = Service::find($id);
+        #Method 4 : Mass assignment
+        $request->merge([
+            'slug' => Str::slug($request->get('name')),
+        ]);
+
+        $service->update($request->all());
+        $success = $request->session()->flash('success', $request->name . ' ' . 'تم التحديث');
+
+
+
+        return redirect()->route('service.index');
     }
 
     /**
@@ -101,6 +146,10 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::findorfail($id);
+        $service->delete();
+        $success = session()->flash('success', $service->name . ' تم الحذف بنجاح');
+
+        return redirect()->back();
     }
 }

@@ -10,6 +10,8 @@ use App\Models\Patient;
 use App\Models\Resturant;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
+
 
 class PatientsController extends Controller
 {
@@ -24,6 +26,9 @@ class PatientsController extends Controller
             $data = Patient::select('*');
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->editColumn('department_id', function (Patient $model) {
+                    return $model->department_id ? $model->Department->name : '';
+                })
                 ->editColumn('image', 'admin.patients._image')
 
                 ->editColumn('status', 'admin.patients.status')
@@ -100,6 +105,14 @@ class PatientsController extends Controller
     public function edit($id)
     {
         $patient = Patient::find($id);
+        $patient = Patient::find($name);
+        $patient = Patient::find($image);
+        $patient = Patient::find($phone);
+        $patient = Patient::find($sex);
+        $patient = Patient::find($email);
+
+
+
 
         return view('admin.patients.edit', compact('patient'));
     }
@@ -113,13 +126,7 @@ class PatientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'category_id' => 'required',
-            'resturant_id' => 'required',
 
-        ]);
         //requset Merge ^_^
 
         $patient = Patient::find($id);

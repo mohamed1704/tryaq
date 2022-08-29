@@ -13,7 +13,7 @@
         </ul>
 
         <div>
-            <a href="{{ route('ads.create') }}" class="btn btn-primary"> اضافة عرض جديد</a>
+            <a href="{{ route('ads.create') }}" class="btn btn-primary"> اضافةاعلان جديد</a>
         </div>
     </div>
     <div class="col-md-12">
@@ -28,7 +28,7 @@
                         <div class="tile-title-w-btn">
 
                             <img class="" style="height:150px ; width:100%; object-fit: cover"
-                                src="{{ asset('storage/' . $offer->image) }}">
+                                src="{{  $offer->image }}">
 
 
 
@@ -38,11 +38,12 @@
                             <div class="row" style="display: flex; justify-content:space-between">
                                 <h3 class="title">{{ $offer->title }}</h3>
                                 <div class="btn-group">
-                                    <a class="btn btn-primary" href="#"><i class="fa fa-lg fa-edit"></i></a>
-                                    <form action="{{route('ads.destroy', $offer->id)}}" method="post">
+                                    <a href="{{ route('ads.edit', $offer->id) }}" class="btn btn-info"><i class="fa fa-lg fa-edit"></i></a>
+                                    <form action="{{ route('ads.destroy', $offer->id) }}" method="post">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="btn btn-danger" href="#"><i class="fa fa-lg fa-trash"></i></button>
+                                        <button type="submit" class="btn btn-danger" href="#"><i
+                                                class="fa fa-lg fa-trash"></i></button>
                                     </form>
                                 </div>
 
@@ -73,7 +74,4 @@
 @endsection
 
 @section('scripts')
-    {{-- <script type="text/javascript" src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/plugins/dataTables.bootstrap.min.js')}}"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script> --}}
 @endsection

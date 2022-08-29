@@ -33,6 +33,10 @@ return [
     'room_number' => 'رقم الغرفة',
     'specialization' => 'التخصص',
     'add_date' => 'التاريخ',
-
-
+    'patients'=> 'المرضى',
+    'add_time'=>'الوقت',
+    'add_day'=>'اليوم',
+    'service_name'=>'اسم الخدمة',
+    'services'=>'الخدمات',
+    'patient_name'=>'اسم المريض'
 ];

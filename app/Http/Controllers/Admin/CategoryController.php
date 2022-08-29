@@ -63,12 +63,12 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-        //requset Merge ^_^ 
+        //requset Merge ^_^
         $request->merge([
             'slug' => Str::slug($request->get('name'))
         ]);
         $categories = Category::create($request->all());
-        //  Write into session 
+        //  Write into session
         $success = $request->session()->flash('success', $request->name . ' ' . 'تمت الاضافة بنجاح');
         return redirect()->route('categories.index', ['categories' => $categories]);
     }

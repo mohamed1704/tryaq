@@ -44,20 +44,20 @@
 <body class="app sidebar-mini">
     <!-- Navbar-->
     <header dir="ltr" class="app-header"><a class="app-header__logo" href="{{ route('admin.index') }}">Tryaq</a>
-        <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
-            aria-label="Hide Sidebar"></a>
+        {{-- <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+            aria-label="Hide Sidebar"></a> --}}
         <!-- Navbar Right Menu-->
         <ul class="app-nav">
-            <li class="app-search">
+            {{-- <li class="app-search">
                 <input class="app-search__input" type="search" placeholder="Search">
                 <button class="app-search__button"><i class="fa fa-search"></i></button>
-            </li>
+            </li> --}}
             <!--Notification Menu-->
             <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"
                     aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
                 <ul class="app-notification dropdown-menu dropdown-menu-right">
-                    <li class="app-notification__title">لديك 4 اشعارات</li>
-                    <div class="app-notification__content">
+                    {{-- <li class="app-notification__title">لديك 4 اشعارات</li> --}}
+                    {{-- <div class="app-notification__content">
                         <li><a class="app-notification__item" href="javascript:;"><span
                                     class="app-notification__icon"><span class="fa-stack fa-lg"><i
                                             class="fa fa-circle fa-stack-2x text-primary"></i><i
@@ -114,7 +114,7 @@
                                     </div>
                                 </a></li>
                         </div>
-                    </div>
+                    </div> --}}
                     <li class="app-notification__footer"><a href="#">عرض الكل</a></li>
                 </ul>
             </li>
@@ -153,29 +153,29 @@
             </div> -->
         </div>
         <ul class="app-menu">
-            <li><a class="app-menu__item active" href="{{ route('admin.index') }}"><i
+            <li><a class="app-menu__item {{ (request()->is('admin')) ? 'active' : '' }} "  href="{{ route('admin.index') }}"><i
                         class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">لوحة
                         التحكم</span></a></li>
-            <li><a class="app-menu__item" href="{{ route('patients.index') }}"><i
-                        class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">المرضى</span></a>
+            <li><a class="app-menu__item {{ (request()->is('admin/patients')) ? 'active' : '' }} " href="{{ route('patients.index') }}"><i
+                        class="app-menu__icon fa fa-users"></i><span class="app-menu__label">المرضى</span></a>
             </li>
             {{-- @can('categories.view-any') --}}
 
-            <li><a class="app-menu__item" href="{{ route('doctors.index') }}"><i
-                        class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">الأطباء</span></a>
+            <li><a class="app-menu__item {{ (request()->is('admin/doctors')) ? 'active' : '' }} " href="{{ route('doctors.index') }}"><i
+                        class="app-menu__icon fa fa-users"></i><span class="app-menu__label">الأطباء</span></a>
             </li>
-            <li><a class="app-menu__item" href="{{ route('categories.index') }}"><i
+            <li><a class="app-menu__item {{ (request()->is('admin/categories')) ? 'active' : '' }} " href="{{ route('categories.index') }}"><i
                         class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">الاقسام</span></a>
             </li>
-            <li><a class="app-menu__item" href="{{ route('service.index') }}"><i
+            <li><a class="app-menu__item {{ (request()->is('admin/service')) ? 'active' : '' }} " href="{{ route('service.index') }}"><i
                         class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">
                         الخدمات</span></a></li>
 
-            <li><a class="app-menu__item" href="{{ route('ads.index') }}"><i
+            <li><a class="app-menu__item {{ (request()->is('admin/ads')) ? 'active' : '' }} " href="{{ route('ads.index') }}"><i
                         class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">الإعلانات</span></a>
             </li>
 
-            <li><a class="app-menu__item" href="{{ route('emergency.index') }}"><i
+            <li><a class="app-menu__item {{ (request()->is('admin/emergency')) ? 'active' : '' }} " href="{{ route('emergency.index') }}"><i
                         class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">حالة طارئة</span></a>
             </li>
 

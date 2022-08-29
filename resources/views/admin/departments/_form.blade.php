@@ -11,9 +11,9 @@
 @php
 
 $columns = Illuminate\Support\Facades\Schema::getColumnListing('departments');
-$discard = ['id', 'created_at', 'updated_at'];
+$discard = ['id', 'created_at', 'updated_at','image'];
 $textarea = ['description'];
-$images = ['image'];
+$images = [];
 $date = [];
 $status = ['status'];
 

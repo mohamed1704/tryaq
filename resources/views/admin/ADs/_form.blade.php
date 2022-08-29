@@ -11,10 +11,10 @@
 @php
 
 $columns = Illuminate\Support\Facades\Schema::getColumnListing('ads');
-$discard = ['id', 'status', 'created_at', 'updated_at'];
+$discard = ['id', 'status', 'created_at', 'updated_at','add_date'];
 $textarea = ['description', 'usage'];
-$images = ['image'];
-$date = ['date'];
+$images = [];
+$date = [];
 
 $filter_data = [];
 $selectfields = [];
@@ -66,8 +66,7 @@ foreach ($columns as $key => $disc) {
             <label for="exampleFormControlSelect1"><strong>{{ __('titles.' . $col) }}</strong></label>
             <select name="{{ $col }}" class="form-control " id="exampleFormControlSelect1">
                 <option value="">Select {{ $col }}</option>
-                @foreach (DB::table($col)->select('id', 'name')->limit(10)->get()
-    as $col)
+                @foreach (DB::table($col)->select('id', 'name')->limit(10)->get() as $col)
                     <option value="{{ $col->id }}">Select {{ $col->name }}</option>
                 @endforeach
 
@@ -75,19 +74,4 @@ foreach ($columns as $key => $disc) {
         </div>
     @endforeach
 </div>
-{{-- <div class="form-group">
-    <label for="exampleFormControlSelect2">الأدوية التي تريد عرضها</label>
-    <select name="medicine_id[]" multiple class="form-control" id="exampleFormControlSelect2">
-        @foreach ($medicines as $col)
-        <option value="{{$col->id}}">Select {{$col->name}}</option>
-        @endforeach
-
-    </select>
-  </div> --}}
-
-
-
-
-
-
 <button type="submit" class="btn btn-primary">{{ $button }}</button>

@@ -48,7 +48,8 @@
                                 <th>#</th>
                                 <th>اسم المريض</th>
                                 <th>صورة المريض</th>
-                                <!-- <th>الحالة</th> -->
+                                <th>رقم الهاتف</th>
+                                <th>البريد الالكتروني</th>
                                 <th>الخيارات</th>
                             </tr>
                         </thead>
@@ -66,7 +67,6 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/plugins/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/plugins/dataTables.bootstrap.min.js') }}"></script>
-    {{-- <script type="text/javascript">$('#sampleTable').DataTable();</script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $.ajaxSetup({
@@ -88,15 +88,19 @@
                         data: 'name',
                         name: 'name'
                     },
+                    //
                     {
                         data: 'image',
                         name: 'image'
                     },
-                    // {
-                    //     data: 'action',
-                    //     name: 'action'
-                    // },
-
+                    {
+                        data: 'phone',
+                        name: 'phone'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
                     {
                         data: 'action',
                         name: 'action',

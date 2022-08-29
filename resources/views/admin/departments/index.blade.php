@@ -47,8 +47,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>اسم القسم</th>
-
-                                <th>الحالة</th>
+                                <th>اوقات العمل</th>
                                 <th>الخيارات</th>
                                 <th></th>
                             </tr>
@@ -67,7 +66,6 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/plugins/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/plugins/dataTables.bootstrap.min.js') }}"></script>
-    {{-- <script type="text/javascript">$('#sampleTable').DataTable();</script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $.ajaxSetup({
@@ -93,8 +91,8 @@
 
 
                     {
-                        data: 'status',
-                        name: 'status'
+                        data: 'times_of_work',
+                        name: 'times_of_work'
                     },
                     // {data: 'email', name: 'email'},
                     {

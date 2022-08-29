@@ -46,25 +46,50 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>اسم القسم</th>
-                                <th>الحالة</th>
+                                <th>اسم الخدمة</th>
                                 <th>السعر</th>
                                 <th>الأقسام</th>
                                 <th>الخيارات</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ( $service as $ser )
-                                <tr>{{ $ser->id }}</tr>
-                                <tr>{{ $ser->status }}</tr>
-                                <tr>{{ $ser->price }}</tr>
-                                <tr>@foreach ( $department as $d)
-                                    @if ($d->id == $ser->department_id)
-                                        {{$d->name}}
-                                    @endif
-                                @endforeach </tr>
-                                {{-- <tr>{{ 'admin.servises.action_icon' }}</tr> --}}
-                            {{-- @endforeach --}} --
+                            @foreach ($service as $ser)
+                                <tr>
+                                    <th>{{ $ser->id }}</th>
+                                    <th>{{ $ser->name }}</th>
+                                    {{-- <th>{{ $ser->status }}</th> --}}
+                                    <th>{{ $ser->price }}</th>
+                                    <th>
+                                        @foreach ($dep as $d)
+                                            @if ($d->id == $ser->department_id)
+                                                {{ $d->name }}
+                                            @endif
+                                        @endforeach
+                                    </th>
+                                    <th>
+                                        <div style="display: row" class="row">
+
+                                            <a href="{{ route('service.edit', $ser->id) }}" class="btn btn-info"><i
+                                                    class="fa fa-lg fa-edit"></i></a>
+                                            <form action="{{ route('service.destroy', $ser->id) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger"><i
+                                                        class="fa fa-lg fa-trash"></i></button>
+                                            </form>
+                                            <div>
+                                                <div class="toggle lg">
+                                                    <label>
+                                                        <input name="status" type="checkbox" checked
+                                                            value="{{ $ser->status == 1 ? '1' : '0' }}"><span
+                                                            class="button-indecator"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -85,41 +110,6 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
-            var table = $('#sampleTable').dataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{{ route('service.index') }}",
-                columns: [{
-                        data: 'id',
-                        name: 'id',
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'image',
-                        name: 'image',
-                    },
-                    {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
-                        data: 'price',
-                        name: 'price'
-                    },
-                    // {data: 'email', name: 'email'},
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
-                ]
-            });
-
         });
     </script>
 @endsection

@@ -29,12 +29,9 @@ class AdsController extends Controller
      */
     public function create()
     {
-        // Gate::authorize('ads.create');
-
         $ads = new Ads();
         return view('admin.ads.create', ['ads' => $ads]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -77,7 +74,7 @@ class AdsController extends Controller
     {
         // Gate::authorize('ads.update');
         $ads = Ads::findOrfail($id);
-        return view('admin.static.edit', ['ads' => $ads]);
+        return view('admin.ads.edit', ['ads' => $ads]);
     }
 
     /**
@@ -89,7 +86,7 @@ class AdsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Gate::authorize('ads.update');
+        // Gate::authorize('ads.update');
 
         $ads = Ads::find($id);
         $ads->update($request->all());

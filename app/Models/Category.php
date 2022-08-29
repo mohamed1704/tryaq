@@ -9,4 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'slug', 'icon', 'status'];
+    use HasFactory;
+    protected $guarded = [];
+    public $timestamps = false;
 }

@@ -11,9 +11,9 @@
 @php
 
 $columns = Illuminate\Support\Facades\Schema::getColumnListing('patients');
-$discard = ['created_at', 'updated_at'];
+$discard = ['created_at', 'updated_at', 'password','status','addres','dob'];
 $textarea = ['description'];
-$images = ['image'];
+$images = [];
 $date = ['dob'];
 $status = ['status'];
 
@@ -37,7 +37,7 @@ foreach ($columns as $key => $disc) {
             @if (in_array($col, $textarea))
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
-                    <textarea name="{{ $col }}" rows="2"  class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                    <textarea name="{{ $col }}" rows="2" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
             @elseif(in_array($col, $images))
                 <div class="form-group col-md-4">
@@ -47,7 +47,7 @@ foreach ($columns as $key => $disc) {
             @elseif(in_array($col, $date))
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
-                    <input type="date" name="{{ $col }}" class="form-control"  value="{{-- $patient->$col --}}">
+                    <input type="date" name="{{ $col }}" class="form-control" value="{{-- $patient->$col --}}">
                 </div>
             @elseif(in_array($col, $status))
                 <div class="form-group col-md-4">
@@ -63,8 +63,8 @@ foreach ($columns as $key => $disc) {
             @else
                 <div class="form-group col-md-4">
                     <label for="exampleFormControlInput1"><strong>{{ __('titles.' . $col) }}</strong></label>
-                    <input  value="{{-- $patient->$col --}}" type="text" name="{{ $col }}" class="form-control" id="exampleFormControlInput1"
-                        placeholder=" هنا">
+                    <input value="{{-- $patient->$col --}}" type="text" name="{{ $col }}" class="form-control"
+                        id="exampleFormControlInput1" placeholder=" هنا">
                 </div>
             @endif
         @endif
@@ -77,8 +77,7 @@ foreach ($columns as $key => $disc) {
             <label for="exampleFormControlSelect1"><strong>{{ __('titles.' . $col) }}</strong></label>
             <select name="{{ $col }}" class="form-control " id="exampleFormControlSelect1">
                 <option value="">Select {{ $col }}</option>
-                @foreach (DB::table($col)->select('id', 'name')->limit(10)->get()
-    as $col)
+                @foreach (DB::table($col)->select('id', 'name')->limit(10)->get() as $col)
                     <option value="{{ $col->id }}">Select {{ $col->name }}</option>
                 @endforeach
 

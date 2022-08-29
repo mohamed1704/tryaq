@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-user-md fa-3x"></i>
                 <div class="info">
                     <h4>عدد الأطباء
                     </h4>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
+            <div class="widget-small warning coloured-icon"><i class="icon fa fa-medkit fa-3x"></i>
                 <div class="info">
                     <h4>الخدمات</h4>
                     <p><b>{{ $service }}</b></p>
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
+            <div class="widget-small danger coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
                 <div class="info">
                     <h4>التحاليل</h4>
                     <p><b>{{ $dia }}</b></p>
@@ -46,141 +46,160 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6" >
-            <div class="tile" style="overflow-y:auto; max-height: 355px">
-                <h3 class="tile-title">الحالات </h3>
-                {{-- <div class="embed-responsive embed-responsive-16by9"> --}}
-                {{-- <canvas class="embed-responsive-item" id="lineChartDemo"></canvas> --}}
+        <div class="col-md-6">
+            <div class="tile" style="overflow-y:auto; max-height: 474.5px">
+                <h3 class="tile-title"> الحالات {{ $ca }} حالة</h3>
+                <p class="tile-title"></p>
                 <table class="table table-hover table-bordered w-100" id="sampleTable" style="">
                     <thead>
                         <tr>
                             <th>#</th>
-
+                            <th>الاسم</th>
+                            <th>اسم الطبيب</th>
+                            <th>الخدمة</th>
+                            <th>اليوم</th>
+                            <th>الوقت</th>
                             <th>الخيارات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($cases as $emer)
-                            <tr>{{ $emer->name }}</tr>
-                        @endforeach --}}
+
                         @foreach ($cases as $cas)
                             <tr>
                                 <th>
                                     {{ $cas->id }}
                                 </th>
                                 <th>
+                                    {{ $cas->patient_name }}
+                                </th>
+                                <th>
+                                    {{ $cas->doctor_name }}
+                                </th>
+                                <th>
+                                    {{ $cas->service_name }}
+                                </th>
+                                <th>
+                                    {{ $cas->add_day }}
+                                </th>
+                                <th>
+                                    {{ $cas->add_time }}
+                                </th>
+                                <th>
                                     <div style="display: row" class="row">
-
-                                        <a href="{{ route('emergency.edit', $cas->id) }}" class="btn btn-info"><i
-                                                class="fa fa-lg fa-edit"></i></a>
                                         <form action="{{ route('emergency.destroy', $cas->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger"><i
                                                     class="fa fa-lg fa-trash"></i></button>
                                         </form>
-                                        <div>
-                                            <div class="toggle lg">
-                                                <label>
-                                                    <input name="status" type="checkbox" checked
-                                                        value="{{ $cas->status == 1 ? '1' : '0' }}"><span
-                                                        class="button-indecator"></span>
-                                                </label>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </th>
                             </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            </th>
-            </tr>
-            @endforeach
-
-
-            </tbody>
-            </table>
-
-            {{-- </div> --}}
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="tile">
-            <h3 class="tile-title">المشاهدات</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-                <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+        <div class="col-md-6" style="max-height: 380px">
+            <div class="tile">
+                <h3 class="tile-title">خدمات القسم شهريا</h3>
+                <figure style="max-height: 370px" class="highcharts-figure">
+                    <div style="max-height: 370px" id="container"></div>
+
+                </figure>
             </div>
         </div>
     </div>
+
     </div>
 @endsection
 @section('scripts')
-    <script type="text/javascript">
-        var data = {
-            labels: ["January", "February", "March", "April", "May"],
-            datasets: [{
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56]
-                },
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [{
-                        {
-                            --$users--
-                        }
-                    }, {
-                        {
-                            --$posts--
-                        }
-                    }, 40, 19, 86]
-                }
-            ]
-        };
-        var pdata = [{
-                value: 300,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "Complete"
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script>
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
             },
-            {
-                value: 50,
-                color: "#F7464A",
-                highlight: "#FF5A5E",
-                label: "In-Progress"
-            }
-        ]
-
-        var ctxl = $("#lineChartDemo").get(0).getContext("2d");
-        var lineChart = new Chart(ctxl).Line(data);
-
-        var ctxp = $("#pieChartDemo").get(0).getContext("2d");
-        var pieChart = new Chart(ctxp).Pie(pdata);
+            title: {
+                text: ''
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [{
+                    name: 'طب الاسنان',
+                    y: 61.41,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'قسم العيادات التخصصية',
+                    y: 11.84
+                }, {
+                    name: 'قسم العمليات الصغرى',
+                    y: 10.85
+                }, {
+                    name: 'قسم المختبرات الطبية',
+                    y: 4.67
+                }, {
+                    name: 'قسم النساء والولادة',
+                    y: 4.18
+                }, {
+                    name: 'قسم امراض الجلدية',
+                    y: 7.05
+                }]
+            }]
+        });
     </script>
-    <!-- Google analytics script-->
-    <script type="text/javascript">
-        if (document.location.hostname == 'pratikborsadiya.in') {
-            (function(i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function() {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-72504830-1', 'auto');
-            ga('send', 'pageview');
+@endsection
+@section('style')
+    <style>
+        .highcharts-figure,
+        .highcharts-data-table table {
+            min-width: 320px;
+            max-width: 660px;
+            margin: 1em auto;
         }
-    </script>
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
 @endsection

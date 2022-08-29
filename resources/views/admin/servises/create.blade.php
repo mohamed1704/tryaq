@@ -35,9 +35,8 @@
             <form method="POST" action="{{ route('service.store') }}" enctype="multipart/form-data">
                 @csrf
                 @include('admin.servises._form', [
-                    'button' => 'إضافة',
+                    'button' => 'اضافة',
                 ])
             </form>
-        </div>
     </div>
 @endsection

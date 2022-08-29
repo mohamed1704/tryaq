@@ -26,8 +26,9 @@ class DashboardController extends Controller
         $users = Patient::count();
         $doctors = Doctor::count();
         $service = Service::count();
-        $dia = Diagnosis::where('service_id', '=', '2')->count();
+        $dia = service::where('department_id', '=', '5')->count();
         $cases = Emergency::all();
+        $ca = Emergency::count();
         $patient = Patient::all();
 
         return view('admin.index', [
@@ -36,7 +37,8 @@ class DashboardController extends Controller
             'service' => $service,
             'dia' => $dia,
             'cases' => $cases,
-            'patient' => $patient
+            'patient' => $patient,
+            'ca' => $ca
 
         ]);
     }

@@ -11,9 +11,9 @@
 @php
 
 $columns = Illuminate\Support\Facades\Schema::getColumnListing('doctors');
-$discard = ['created_at', 'updated_at', 'slug'];
+$discard = ['created_at', 'updated_at', 'slug','dob','speciallization'];
 $textarea = ['description'];
-$images = ['image'];
+$images = [];
 $date = ['dob'];
 $status = ['status'];
 
